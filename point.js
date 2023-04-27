@@ -18,12 +18,33 @@ class Point {
     }
 
     getPixelX(){
-        const px = map(this.x, -1, 1, 0,this.width);
+        const px = map(this.x, -1, 1, 0,width);
         return px;
     }
     getPixelY(){
-        const py = map(this.y, -1, 1,this.height, 0);
+        const py = map(this.y, -1, 1,height, 0);
         return py;
     }
+    show(){
+
+        stroke(0);
+        if (this.label === 1) {
+            fill(0);
+        }else{
+            fill(225);
+        }
+
+        const px = this.getPixelX();
+        const py = this.getPixelY();
+
+        ellipse(px, py,  22, 22);  
+        
+    }
+
+    
+    debug(){
+        console.log(`label: ${this.label} - x: ${this.x} - y: ${this.y}`);
+    }
+
 
 }

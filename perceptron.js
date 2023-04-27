@@ -9,8 +9,9 @@ class Perceptron {
 
     guess(inputs){
         let sum = 0;
-        for (let i = 0; i < this.weights.length; i++) {
-            
+
+        //Y = x1 * w1 + x2 * w2
+        for (let i = 0; i < this.weights.length; i++) {            
             sum += inputs[i] * this.weights[i];                        
         }
 
@@ -18,7 +19,7 @@ class Perceptron {
 
         return output;
     }
-
+    //função de ativação
     sign(number){
         return number >=0 ? 1 : -1;
     }
