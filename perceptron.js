@@ -1,9 +1,11 @@
 class Perceptron {
-    weights = [0,0];
+    weigths = [];
+    lr = 0.1;
 
-    constructor(){
-        for (let index = 0; index < this.weights.length; index++) {
-            this.weights[index] = random(-1,1);            
+    constructor(numberWeigths){
+        this.weigths = new Array(numberWeigths);
+        for (let index = 0; index < this.weigths.length; index++) {
+            this.weigths[index] = random(-1,1);            
         }
     }
 
@@ -11,13 +13,22 @@ class Perceptron {
         let sum = 0;
 
         //Y = x1 * w1 + x2 * w2
-        for (let i = 0; i < this.weights.length; i++) {            
-            sum += inputs[i] * this.weights[i];                        
+        for (let i = 0; i < this.weigths.length; i++) {            
+            sum += inputs[i] * this.weigths[i];                        
         }
 
         const output = this.sign(sum);
 
         return output;
+    }
+
+    train(inputs, target){
+        const guess = this.guess(inputs);
+        const error = target - guess;
+
+        for (let i = 0; i < this.weigths.length; i++) {           
+            this.weigths[i] += error * inputs[i] * this.lr;            
+        }
     }
     //função de ativação
     sign(number){
