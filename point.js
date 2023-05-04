@@ -1,16 +1,24 @@
+//reta
+function f(x){
+    return 0.2+x*0.3;
+}
+//Se guess <> do label ele errou
 class Point {
     x = 0; 
     y = 0; 
     label = 0;
+    bias = 1;
 
     constructor(x,y){
         this.x = x;
         this.y = y;
+        this.bias = 1;
         this.label = this.getLabel();
     }
 
     getLabel(){
-        if(this.x > this.y){
+        const lineY = f(this.x);
+        if(this.y > lineY){
             return 1;
         }else{
             return -1;

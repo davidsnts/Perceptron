@@ -36,6 +36,13 @@ class Perceptron {
     }
 
     
-    
+    guessY(x){
+        const w0 = this.weigths[0];
+        const w1 = this.weigths[1];
+        const w2 = this.weigths[2];
+
+        return -(w2/w1) - (w0/w1) * x;
+        
+    }
 
 }
